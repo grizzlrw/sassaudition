@@ -1,3 +1,95 @@
+// Build brand color and add to themes prior to
+  // bootstrap import to allow brand usable as bootstrap color
+$brand: #5a9cff;
+$theme-colors: ( "brand": $brand );
+
 // Bootstrap
 @import "vendor/bootstrap/scss/bootstrap.scss";
 
+@include media-breakpoint-up(xs) {
+  .registry-actions {
+    text-align: center;
+    align-content: center;
+    margin: 1rem 0;
+  }
+
+  .cta-group {
+    display: flex;
+    flex-direction: column;
+
+    .btn {
+      margin: .25rem 0;
+      padding: 1rem;
+    }
+  }
+}
+
+@include media-breakpoint-up(md) {
+  .cta-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+
+    .btn {
+      flex: 1 1 auto;
+      margin: 0 1rem;
+      padding: 1rem;
+    }
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .registry-actions {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+  }
+
+  .cta-group {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 auto;
+    justify-content: space-between;
+
+
+    .btn {
+      flex: 1 1 auto;
+      margin: 0 1rem;
+      padding: 1rem;
+    }
+  }
+}
+
+.cta-group .btn-brand {
+  background-color: transparent;
+  border: 3px $brand solid;
+  color: $brand;
+  font-weight: bold;
+
+  $brand-hover: darken($brand, 20%);
+
+  &:hover, &:focus {
+    transition: all .5s;
+    border: 3px $brand-hover solid;
+  }
+
+  &:not(.cta) {
+    color: $brand;
+
+    &:hover, &:focus {
+      transition: all .5s;
+      color: $brand-hover;
+    }
+  }
+
+  &.cta {
+    background-color: $brand;
+    color: $white;
+
+    &:hover, &:focus {
+      transition: all .5s;
+      background-color: $brand-hover;
+    }
+  }
+}
